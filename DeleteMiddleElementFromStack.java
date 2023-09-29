@@ -3,13 +3,21 @@ import java.util.Stack;
 public class DeleteMiddleElementFromStack {
 
     public static void deleteMiddle(Stack<Integer> st, int n){
-        if(st.size() == (n/2)+1){
+        int count = 0;
+        solve(st,count, n);
+        return;
+    }
+
+    public static void solve(Stack<Integer> st, int count, int n){
+        if(count == n/2){
             st.pop();
             return;
         }
-        int top = st.pop();
-        deleteMiddle(st, n);
-        st.push(top);
+
+        int poped = st.pop();
+        solve(st, count+1, n);
+        st.push(poped);
+        return;
     }
 
     // Another method
