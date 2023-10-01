@@ -5,21 +5,22 @@ public class RedundantBracket{
         Stack<Character> st = new Stack<>();
         for(int i =0; i<str.length(); i++){
             char ch = str.charAt(i);
-            if(ch == '(' || ch == '+' || ch == '-' || ch == '*' || ch == '/'){
+            if( ch == '('  || ch == '+' || ch == '-' || ch == '*' || ch == '/'){
                 st.push(ch);
             }else{
                 if(ch == ')'){
                     int count = 0;
-                    while( !st.isEmpty() && st.peek() != ')'){
+                    while(st.peek() != '('){
                         st.pop();
                         count++;
-                    }if(!st.isEmpty()){
-                        st.pop();
                     }
-                    if(count == 0){
+                    st.pop();
+            
+                    if(count==0){
                         return true;
                     }
                 }
+                
             }
         }
         return false;
